@@ -1,5 +1,6 @@
 package com.example.notes;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -11,11 +12,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class forgotpassword extends AppCompatActivity {
 
     private EditText mforgotpassword;  // variable for edittext
     private Button mpasswordrecoverbutton; // variable for button
     private TextView mgobacktologin; // variable for text view
+
+
+    FirebaseAuth firebaseAuth;
 
 
 
@@ -30,6 +38,7 @@ public class forgotpassword extends AppCompatActivity {
         mforgotpassword = findViewById(R.id.forgotpassword);
         mpasswordrecoverbutton = findViewById(R.id.passwordrecoverbutton);
         mgobacktologin = findViewById(R.id.gobacktologin);
+        firebaseAuth = FirebaseAuth.getInstance();  // getting instance of the user
 
         mgobacktologin.setOnClickListener(new View.OnClickListener() { // click listner for going back to login
             @Override
@@ -51,6 +60,19 @@ public class forgotpassword extends AppCompatActivity {
                 }
                 else{
                     // we have to send mail
+                    firebaseAuth.sendPasswordResetEmail(mail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(getApplicationContext(),"Mail sent to registered email",Toast.LENGTH_SHORT).show();
+                                finish();
+                                startActivity(new Intent(forgotpassword.this, MainActivity.class));
+                            }
+                            else{
+                                Toast.makeText(getApplicationContext(),"Account not exists!",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
                 }
             }
         });
