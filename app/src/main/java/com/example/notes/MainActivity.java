@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     TextView mgotoforgotpassword;
     private FirebaseAuth firebaseAuth;
 
+    ProgressBar mprogressbarofmainactivity;
+
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         mgotoforgotpassword = findViewById(R.id.gotoforgotpassword);
         mgotosignup = findViewById(R.id.signup);
         firebaseAuth = FirebaseAuth.getInstance();
+        mprogressbarofmainactivity = findViewById(R.id.progressbarofmainactivity);
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
         if(firebaseUser!=null){
@@ -69,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
 
                 }
                 else{
+
+
+                    mprogressbarofmainactivity.setVisibility(View.VISIBLE);
                     // login the user
                     firebaseAuth.signInWithEmailAndPassword(mail,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -78,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                             }
                             else{
                                 Toast.makeText(getApplicationContext(),"Account doesnt exists!", Toast.LENGTH_SHORT).show();
+                                mprogressbarofmainactivity.setVisibility(View.INVISIBLE);
                             }
                         }
                     });
@@ -96,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, noteActivity.class));
         }
         else{
+            mprogressbarofmainactivity.setVisibility(View.INVISIBLE);
             Toast.makeText(getApplicationContext(),"Please verify your email first!", Toast.LENGTH_SHORT).show();
             firebaseAuth.signOut();
         }

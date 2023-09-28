@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".createnote">
+    tools:context=".editnoteactivity">
 
 
-    
+
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="90dp"
-        android:id="@+id/toolbarofcreatenote"
+        android:id="@+id/toolbarofeditnote"
         android:background="@color/white">
 
 
@@ -22,8 +22,9 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:hint="Enter your note title here"
-            android:id="@+id/createtitleofnote">
+            android:hint="Note Title"
+
+            android:id="@+id/edittitleofnote">
 
         </EditText>
 
@@ -38,10 +39,11 @@
         android:gravity="top|left"
         android:textColor="@color/black"
         android:hint="Enter your Note here"
-        android:layout_below="@+id/toolbarofcreatenote"
+        android:layout_below="@+id/toolbarofeditnote"
         android:padding="15dp"
-        android:id="@+id/createcontentfornote"
+        android:id="@+id/editcontentofnote"
         ></EditText>
+
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -52,7 +54,7 @@
         android:layout_marginBottom="30dp"
         android:layout_marginRight="30dp"
         android:layout_gravity="bottom|end"
-        android:id="@+id/savenote"
+        android:id="@+id/saveeditnote"
         android:src="@drawable/baseline_save_24"
         android:background="#A1F4FB"
         app:maxImageSize="40dp">
@@ -61,15 +63,6 @@
 
 
 
-
-
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:visibility="invisible"
-        android:id="@+id/createnoteprogrssbar"
-        android:layout_marginTop="10dp"></ProgressBar>
 
 
 </RelativeLayout>

@@ -4,7 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".noteActivity">
+    tools:context=".noteActivity"
+    android:background="#f9f9f9">
+
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="45dp"-->
+<!--        android:background="@color/black">-->
+
+<!--        <androidx.appcompat.widget.AppCompatToggleButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+
+
+
+
+<!--    </androidx.appcompat.widget.Toolbar>-->
+
 
 
 
@@ -19,6 +35,23 @@
         android:layout_gravity="bottom|end"
         android:id="@+id/createnotefab"
         android:src="@drawable/baseline_add_24"
+        android:background="#A1F4FB"
+        app:maxImageSize="40dp">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_gravity="right|start"
+        android:id="@+id/signoutfab"
+        android:src="@drawable/baseline_logout_24"
         android:background="#A1F4FB"
         app:maxImageSize="40dp">
 
